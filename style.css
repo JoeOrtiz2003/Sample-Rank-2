@@ -1,0 +1,287 @@
+:root {
+    --mainWidth: min(90vw, 600px);
+    --font: 'Oswald', sans-serif;
+
+    --ranking-title-color: black;
+    --ranking-header-color: white;
+    --ranking-header-background-color: #1093bb;
+
+    --ranking-element-color: white;
+    --ranking-uneven-background-color: #07415c;
+    --ranking-even-background-color: #064d83;
+
+    --alive-background-color: white;
+    --lower-background-color: #1093bb;
+    --dead-background-color: black;
+}
+
+body {
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    background: transparent;
+    font-family: var(--font);
+}
+
+#mainDiv {
+    width: var(--mainWidth);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+#rankingTitle {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--ranking-title-color);
+    text-align: center;
+    margin-bottom: 10px;
+    display: none;
+}
+
+.rankingHeader {
+    display: flex;
+    width: 100%;
+    background-color: var(--ranking-header-background-color);
+    color: var(--ranking-header-color);
+    padding: 8px 0;
+}
+
+.rankingHeader > p {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+}
+
+/* Flex layout and widths */
+#rankingHeaderRank,
+.rankingElementRank {
+    flex: 0 0 40px;
+    text-align: center;
+}
+
+#rankingHeaderTeam,
+.rankingElementLogoWrapper {
+    flex: 0 0 120px;
+}
+
+#rankingHeaderAlive,
+.rankingElementAliveWrapper {
+    flex: 0 0 100px;
+    justify-content: center;
+}
+
+
+#rankingHeaderElims,
+.rankingElementKills {
+    flex: 0 0 60px;
+    text-align: center;
+}
+
+#rankingElementsWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.rankingElement {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+.rankingElementBackground {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-color: var(--ranking-even-background-color);
+    z-index: 0;
+}
+
+.rankingElementWrapper {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 40px;
+    align-items: center;
+    z-index: 1;
+}
+
+.rankingElementRank,
+.rankingElementName,
+.rankingElementKills {
+    font-size: 18px;
+    letter-spacing: 0.1em;
+    line-height: 40px;
+    font-weight: 600;
+    color: var(--ranking-element-color);
+    margin: 0;
+}
+
+.rankingElementWrapper > p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rankingElementLogoWrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding-left: 6px;
+}
+
+.rankingElementLogo {
+    width: 26px;
+    height: 26px;
+    object-fit: cover;
+}
+
+.rankingElementAliveWrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.rankingElementAlive {
+    width: 10px;
+    height: 24px;
+    background-color: var(--alive-background-color);
+    border: 1px solid white;
+    border-radius: 25px;
+}
+
+/* Even/odd backgrounds */
+.rankingElement:nth-child(even) .rankingElementBackground {
+    background-color: var(--ranking-uneven-background-color);
+}
+
+.rankingElement:nth-child(odd) .rankingElementBackground {
+    background-color: var(--ranking-even-background-color);
+}
+
+.rankingElementKnocked .rankingElementBackground {
+    background-color: var(--knocked-background-color);
+}
+
+.rankingElementDead .rankingElementBackground {
+    background-color: var(--dead-background-color);
+}
+
+.fadedTeam {
+    opacity: 1.0;
+    filter: grayscale(100%);
+    transition: all 0.5s ease-in-out;
+}
+
+.fadedTeam .rankingElementRank,
+.fadedTeam .rankingElementName,
+.fadedTeam .rankingElementLogo,
+.fadedTeam .rankingElementKills,
+.fadedTeam .rankingElementAlive {
+    opacity: 0.4;
+    filter: grayscale(100%);
+}
+
+/* Animation */
+@keyframes slideUp {
+    0% { transform: translateY(20px); opacity: 0.5; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideDown {
+    0% { transform: translateY(-20px); opacity: 0.5; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+.slide-up {
+    animation: slideUp 0.5s ease-in-out;
+}
+
+
+.lowerHeader {
+    display: flex;
+    width: 100%;
+    background-color: var(--lower-background-color);
+    color: white;
+    padding: 8px 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.lowerHeaderInner {
+    display: flex;
+    gap: 60px;
+    transform: translateX(0px); /* shift contents slightly left */
+}
+
+
+.lowerHeaderSection {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.statusIndicatorBox {
+    width: 10px;
+    height: 24px;
+    border: 1px solid var(--ranking-uneven-background-color);;
+    border-radius: 10px;
+}
+
+.whiteBox {
+    background-color: var(--alive-background-color);
+}
+
+.blackBox {
+    background-color: var(--dead-background-color);
+}
+
+.statusIndicatorText {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: #e5e7eb;
+}
+
+html {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+}
+
+body {
+  margin: 0;
+  line-height: inherit;
+}
+
+h1 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
