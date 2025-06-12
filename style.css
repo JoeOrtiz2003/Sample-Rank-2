@@ -1,17 +1,14 @@
 :root {
-    --mainWidth: min(90vw, 600px);
+    --mainWidth: min(90vw, 420px);
     --font: 'Oswald', sans-serif;
-
     --ranking-title-color: black;
     --ranking-header-color: white;
-    --ranking-header-background-color: #1093bb;
-
+    --ranking-header-background-color: #098ab1;
     --ranking-element-color: white;
-    --ranking-uneven-background-color: #07415c;
-    --ranking-even-background-color: #064d83;
-
+    --ranking-uneven-background-color: #255868;
+    --ranking-even-background-color: #1f6074;
     --alive-background-color: white;
-    --lower-background-color: #1093bb;
+    --lower-background-color: #1f6074;
     --dead-background-color: black;
 }
 
@@ -62,6 +59,7 @@ body {
 .rankingElementRank {
     flex: 0 0 40px;
     text-align: center;
+    padding-left: 15px; /* Shift content slightly to the right */
 }
 
 #rankingHeaderTeam,
@@ -75,6 +73,16 @@ body {
     justify-content: center;
 }
 
+#rankingHeaderPoints,
+.rankingElementPoints {
+    display: block;
+    flex: 0 0 60px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ranking-element-color);
+    margin: 0;
+}
 
 #rankingHeaderElims,
 .rankingElementKills {
@@ -119,8 +127,9 @@ body {
 
 .rankingElementRank,
 .rankingElementName,
-.rankingElementKills {
-    font-size: 18px;
+.rankingElementKills,
+.rankingElementPoints {
+    font-size: 20px;
     letter-spacing: 0.1em;
     line-height: 40px;
     font-weight: 600;
@@ -137,13 +146,13 @@ body {
 .rankingElementLogoWrapper {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 10px;
     padding-left: 6px;
 }
 
 .rankingElementLogo {
-    width: 26px;
-    height: 26px;
+    width: 35px;
+    height: 35px;
     object-fit: cover;
 }
 
@@ -188,6 +197,7 @@ body {
 .fadedTeam .rankingElementName,
 .fadedTeam .rankingElementLogo,
 .fadedTeam .rankingElementKills,
+.fadedTeam .rankingElementPoints,
 .fadedTeam .rankingElementAlive {
     opacity: 0.4;
     filter: grayscale(100%);
@@ -256,7 +266,6 @@ body {
 *,
 ::before,
 ::after {
-  box-sizing: border-box;
   border-width: 0;
   border-style: solid;
   border-color: #e5e7eb;
