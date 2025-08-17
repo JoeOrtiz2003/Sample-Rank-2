@@ -2,12 +2,12 @@
   --mainWidth: min(90vw, 300px);
   --font: 'Oswald', sans-serif;
   --ranking-header-color: black;
-  --ranking-header-background-color: #e6b220;
+  --ranking-header-background-color: #ed9700;
   --ranking-element-color: white;
-  --ranking-uneven-background-color: #453105;
-  --ranking-even-background-color: #73540a;
+  --ranking-uneven-background-color: #573600;
+  --ranking-even-background-color: #744e0d;
   --alive-background-color: #ffffff;
-  --lower-background-color: #73540a;
+  --lower-background-color: #744e0d;
   --dead-background-color: #0e0d0d;
 }
 
