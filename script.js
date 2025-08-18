@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const mainDiv = document.getElementById("mainDiv");
   mainDiv.style.display = "flex";
 
-  createRankingElements(18);
+  createRankingElements(19);
   fetchRankingData();
   setInterval(fetchRankingData, 1000);
 });
@@ -14,7 +14,7 @@ const sheetURL = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=
 
 let previousRanks = {};
 
-function createRankingElements(count = 18) {
+function createRankingElements(count = 19) {
   const wrapper = document.getElementById("rankingElementsWrapper");
   wrapper.innerHTML = "";
 
